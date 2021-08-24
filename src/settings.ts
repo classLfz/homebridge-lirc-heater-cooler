@@ -6,8 +6,6 @@ export const MANU_FACTURER = 'homebridge lirc heater-cooler'
 
 export const MODEL = 'RespberryPI LIRC HeaterCooler'
 
-export const DEFAULT_DEBOUNCE_TIME = 1000
-
 export interface LircHeaterCoolerConfig extends AccessoryConfig {
 	lirc: {
 		commands: {

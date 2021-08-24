@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 import { AccessoryConfig, AccessoryPlugin, API, Logger, Service } from 'homebridge'
-import { DEFAULT_DEBOUNCE_TIME, LircHeaterCoolerConfig, MANU_FACTURER, MODEL } from './settings'
+import { LircHeaterCoolerConfig, MANU_FACTURER, MODEL } from './settings'
 
 const { version } = require('../package.json')
 const nodeLIRC = require('node-lirc')
@@ -40,14 +40,14 @@ export class HeaterCoolerAccessory implements AccessoryPlugin {
 		this.service = new this.api.hap.Service.HeaterCooler(this.config.name)
 
 		this.service.getCharacteristic(this.api.hap.Characteristic.Active)
-		.onGet(this.handleActiveGet.bind(this))
-		.onSet(this.handleActiveSet.bind(this))
+			.onGet(this.handleActiveGet.bind(this))
+			.onSet(this.handleActiveSet.bind(this))
 
 		this.service.getCharacteristic(this.api.hap.Characteristic.CurrentHeaterCoolerState)
 			.onGet(this.handleCurrentHeaterCoolerStateGet.bind(this))
 
 		this.service.getCharacteristic(this.api.hap.Characteristic.CurrentTemperature)
-		.onGet(this.handleCurrentTemperatureGet.bind(this))
+			.onGet(this.handleCurrentTemperatureGet.bind(this))
 
 		this.service.getCharacteristic(this.api.hap.Characteristic.TargetHeaterCoolerState)
 			.onGet(this.handleTargetHeaterCoolerStateGet.bind(this))
