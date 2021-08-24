@@ -1,0 +1,45 @@
+{
+	"bridge": {
+		"name": "Homebridge",
+		"username": "CC:22:3D:E3:CE:30",
+		"port": 51826,
+		"pin": "031-45-154"
+	},
+	"description": "This is an example configuration for the Homebridge Lirc HeaterCooler plugin",
+	"accessories": [
+		{
+			"accessory": "HomebridgeLircHeaterCooler",
+			"name": "room air conditioner",
+			"lirc": {
+				"commands": {
+					"lircd": "lircd",
+					"irrecord": "irrecord",
+					"irsend": "irsend",
+					"unbuffer": "unbuffer"
+				},
+				"lirc_driver": "default",
+				"lirc_conf": "/etc/lirc/lircd.conf",
+				"lirc_pid": "/var/run/lirc/lircd.pid",
+				"device": "/dev/lirc0",
+				"tmp_dir": "tmp/",
+				"remote": "MY_REMOTE"
+			},
+			"debounceTime": 1000,
+			"activeCommands": {
+				"active": "TCL.AIRCON ON",
+				"inactive": "TCL.AIRCON OFF"
+			},
+			"stateCommands": {
+				"auto": "TCL.AIRCON ON",
+				"heat": "TCL.AIRCON ON",
+				"cool": "TCL.AIRCON ON"
+			},
+			"heatTempsCommands": {
+				"template": "TCL.AIRCON TEMP{tempNum}"
+			},
+			"coolTempsCommands": {
+				"template": "TCL.AIRCON TEMP{tempNum}"
+			}
+		}
+	]
+}
